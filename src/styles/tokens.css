@@ -1,0 +1,69 @@
+/* src/styles/tokens.css */
+:root {
+    /* Colors (from design.md) */
+    --color-bone-white: #FAF7F2;
+    --color-ivory: #F5EFE6;
+    --color-blush-pink: #F8C9D4;
+    --color-soft-pink: #FADCE3;
+    --color-rose-pink: #EF7DA0;
+    --color-deep-rose: #C24170;
+    --color-charcoal: #4A3B3F;
+    --color-white: #FFFFFF;
+
+    /* Typography */
+    --font-heading: 'Indie Flower', cursive;
+    --font-body: 'Quicksand', sans-serif;
+
+    /* Spacing */
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-xxl: 48px;
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-pill: 999px;
+
+    /* Shadows */
+    --shadow-soft: 0 10px 30px rgba(194, 65, 112, 0.08);
+    --shadow-button: 0 8px 20px rgba(239, 125, 160, 0.35);
+    --shadow-polaroid: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Base Resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-bone-white);
+    color: var(--color-charcoal);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+#app {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

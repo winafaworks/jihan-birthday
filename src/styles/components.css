@@ -1,0 +1,612 @@
+/* src/styles/components.css */
+
+/* Scene Layout */
+.scene {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    padding: var(--space-lg);
+    background: var(--color-bone-white);
+}
+
+.scene.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 10;
+}
+
+.scene.scrollable {
+    justify-content: flex-start;
+    overflow-y: auto;
+    padding-top: var(--space-xxl);
+}
+
+/* Specific Backgrounds */
+#scene-envelope {
+    background: linear-gradient(160deg, var(--color-soft-pink) 0%, var(--color-bone-white) 60%, var(--color-white) 100%);
+}
+
+#scene-birthday {
+    background: linear-gradient(135deg, var(--color-soft-pink), var(--color-ivory));
+}
+
+#scene-letter {
+    background: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="%23F5EFE6"/><circle cx="50" cy="50" r="1" fill="%23F8C9D4"/></svg>');
+}
+
+/* Typography Utility */
+.mt-4 { margin-top: var(--space-md); }
+.mt-8 { margin-top: var(--space-xl); }
+.mb-4 { margin-bottom: var(--space-md); }
+.text-center { text-align: center; }
+.hidden { display: none !important; }
+
+/* Buttons */
+.btn-primary {
+    background: linear-gradient(135deg, #F8A6C1, var(--color-rose-pink));
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-size: 20px;
+    border-radius: var(--radius-pill);
+    padding: 14px 32px;
+    border: none;
+    box-shadow: var(--shadow-button);
+    cursor: pointer;
+    transition: transform 150ms ease, box-shadow 150ms ease;
+    outline: none;
+}
+
+.btn-primary:active {
+    transform: scale(0.96);
+    box-shadow: 0 4px 10px rgba(239, 125, 160, 0.35);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--color-deep-rose);
+    border: 2px solid var(--color-rose-pink);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: var(--radius-pill);
+    padding: 10px 24px;
+    cursor: pointer;
+    transition: all 150ms ease;
+}
+
+.btn-secondary:active {
+    background: var(--color-soft-pink);
+}
+
+.btn-icon {
+    background: var(--color-white);
+    color: var(--color-deep-rose);
+    border: 1px solid var(--color-soft-pink);
+    font-family: var(--font-body);
+    font-weight: 600;
+    border-radius: var(--radius-pill);
+    padding: 8px 20px;
+    box-shadow: var(--shadow-soft);
+    cursor: pointer;
+}
+
+/* Scene 1: Envelope 3D (Realistic) */
+.envelope-container {
+    perspective: 1200px;
+    width: 280px;
+    height: 200px;
+    position: relative;
+    animation: float 3s ease-in-out infinite;
+    z-index: 10;
+}
+
+.envelope-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    /* 3D resting angle */
+    transform: rotateX(15deg) rotateY(-10deg);
+}
+
+.env-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #E6DFD4;
+    border-radius: 6px;
+    box-shadow: 0 15px 35px rgba(194, 65, 112, 0.2);
+    transform: translateZ(-2px);
+}
+
+.letter-peek {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    right: 15px;
+    height: 180px;
+    background: #FFF repeating-linear-gradient(
+        var(--color-white),
+        var(--color-white) 28px,
+        #f0ece6 29px,
+        #f0ece6 30px
+    );
+    border-radius: 4px;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.02), 0 0 5px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 26px;
+    color: var(--color-deep-rose);
+    transform: translateZ(0px) translateY(0);
+}
+
+.env-front {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 140px solid #F5EFE6;
+    border-right: 140px solid #F5EFE6;
+    border-bottom: 110px solid #EAE1D3;
+    border-top: 90px solid transparent;
+    border-radius: 0 0 6px 6px;
+    filter: drop-shadow(0 -3px 4px rgba(0,0,0,0.05));
+    transform: translateZ(2px);
+}
+
+.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 140px solid transparent;
+    border-right: 140px solid transparent;
+    border-top: 120px solid #FAF4EB;
+    transform-origin: top;
+    filter: drop-shadow(0 5px 8px rgba(0,0,0,0.15));
+    transform: translateZ(3px) rotateX(0deg);
+}
+
+.heart-seal {
+    position: absolute;
+    top: 105px;
+    left: 50%;
+    transform: translateX(-50%) translateZ(4px);
+    font-size: 32px;
+    filter: drop-shadow(0 3px 5px rgba(0,0,0,0.2));
+}
+
+/* Scene 2: Countdown & Cake */
+.countdown-wrapper {
+    background: var(--color-white);
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    border: 1px dashed var(--color-blush-pink);
+    width: 100%;
+    max-width: 340px;
+}
+
+.countdown-title {
+    font-family: var(--font-heading);
+    color: var(--color-deep-rose);
+    text-align: center;
+    margin-bottom: var(--space-md);
+    font-size: 24px;
+}
+
+.countdown-boxes {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.cd-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--color-ivory);
+    padding: 10px;
+    border-radius: var(--radius-md);
+    min-width: 60px;
+    border: 1px solid var(--color-soft-pink);
+}
+
+.cd-box span {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    color: var(--color-rose-pink);
+    line-height: 1.2;
+}
+
+.cd-box small {
+    font-size: 12px;
+    color: var(--color-charcoal);
+}
+
+.instruction-text {
+    font-family: var(--font-body);
+    color: var(--color-charcoal);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* CSS Cake Drawing (2-Tier Realistic) */
+.cake-container {
+    margin-top: 30px;
+    position: relative;
+    height: 180px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.cake {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.tier {
+    position: relative;
+    box-shadow: inset 0 -8px 10px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.tier-bottom {
+    width: 180px;
+    height: 70px;
+    background: #F48FB1;
+    border-radius: 12px;
+    z-index: 1;
+}
+
+.tier-top {
+    width: 140px;
+    height: 60px;
+    background: #FFCCBC;
+    border-radius: 12px 12px 0 0;
+    margin-bottom: -5px;
+    z-index: 2;
+}
+
+.icing {
+    position: absolute;
+    top: -12px;
+    left: -4px;
+    width: calc(100% + 8px);
+    display: flex;
+    justify-content: space-around;
+    z-index: 3;
+}
+
+.scallop {
+    flex: 1;
+    height: 25px;
+    background: var(--color-white);
+    border-radius: 50%;
+    box-shadow: 0 4px 5px rgba(0,0,0,0.05);
+}
+
+.sprinkle {
+    position: absolute;
+    width: 6px;
+    height: 12px;
+    border-radius: 6px;
+    z-index: 3;
+}
+
+.s1 { background: #64B5F6; top: 25px; left: 30px; transform: rotate(45deg); }
+.s2 { background: #FFD54F; top: 15px; right: 40px; transform: rotate(-20deg); }
+.s3 { background: #81C784; top: 35px; left: 80px; transform: rotate(70deg); }
+.s4 { background: #FFD54F; top: 30px; left: 40px; transform: rotate(-45deg); }
+.s5 { background: #FFF; top: 20px; right: 50px; transform: rotate(30deg); }
+.s6 { background: #64B5F6; top: 40px; left: 100px; transform: rotate(-10deg); }
+
+.candles {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: -10px;
+    z-index: 3;
+}
+
+.candle {
+    position: relative;
+    width: 14px;
+    height: 45px;
+    border-radius: 4px;
+    box-shadow: inset -2px 0 5px rgba(0,0,0,0.1);
+}
+
+.candle-1 { background: #F06292; height: 40px; margin-top: 5px; }
+.candle-2 { background: #4FC3F7; height: 50px; margin-top: -5px; }
+.candle-3 { background: #AED581; height: 40px; margin-top: 5px; }
+
+.flame {
+    width: 16px;
+    height: 24px;
+    background: #FFC107;
+    border-radius: 50% 50% 20% 20%;
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 15px #FFCA28, inset 0 -4px #FF9800;
+    animation: flicker 1.5s infinite;
+}
+
+.flame.extinguished {
+    animation: extinguish 0.6s forwards;
+}
+
+/* Scene 3: Happy Birthday Text */
+.birthday-title {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    color: var(--color-deep-rose);
+    text-align: center;
+    line-height: 1.3;
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.sparkles-container {
+    font-size: 24px;
+    margin-top: var(--space-md);
+    opacity: 0;
+}
+
+/* Scene 4: Music Player */
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    color: var(--color-deep-rose);
+    margin-bottom: var(--space-xl);
+}
+
+.vinyl-container {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 30px;
+}
+
+.vinyl {
+    width: 100%;
+    height: 100%;
+    background: #111;
+    border-radius: 50%;
+    border: 6px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* vinyl spinning is now handled by GSAP */
+
+.vinyl-label {
+    width: 60px;
+    height: 60px;
+    background: var(--color-rose-pink);
+    border-radius: 50%;
+    border: 4px solid var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.tonearm {
+    position: absolute;
+    top: -10px;
+    right: 0;
+    width: 20px;
+    height: 100px;
+    background: silver;
+    transform-origin: top center;
+    transform: rotate(-30deg);
+    border-radius: 10px;
+    transition: transform 0.5s ease;
+}
+
+.vinyl.playing + .tonearm {
+    transform: rotate(10deg);
+}
+
+.sound-wave {
+    display: flex;
+    gap: 4px;
+    height: 30px;
+    align-items: flex-end;
+    justify-content: center;
+    margin-bottom: var(--space-lg);
+}
+
+.bar {
+    width: 6px;
+    background: var(--color-rose-pink);
+    border-radius: 3px;
+    height: 4px;
+    transition: height 0.2s ease;
+}
+
+.sound-wave.playing .bar {
+    animation: wave 1s ease-in-out infinite alternate;
+}
+.sound-wave.playing .bar:nth-child(1) { animation-delay: 0.1s; }
+.sound-wave.playing .bar:nth-child(2) { animation-delay: 0.4s; }
+.sound-wave.playing .bar:nth-child(3) { animation-delay: 0.2s; }
+.sound-wave.playing .bar:nth-child(4) { animation-delay: 0.5s; }
+.sound-wave.playing .bar:nth-child(5) { animation-delay: 0.3s; }
+.sound-wave.playing .bar:nth-child(6) { animation-delay: 0.6s; }
+
+
+/* Scene 5: Letter */
+.letter-card {
+    background: var(--color-white);
+    padding: var(--space-xl) var(--space-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid var(--color-ivory);
+}
+
+.letter-heading {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    color: var(--color-deep-rose);
+    margin-bottom: var(--space-md);
+    border-bottom: 2px dashed var(--color-blush-pink);
+    padding-bottom: var(--space-sm);
+    text-align: center;
+}
+
+.letter-content {
+    font-size: 16px;
+    color: var(--color-charcoal);
+    line-height: 1.8;
+}
+
+.letter-content p {
+    margin-bottom: 12px;
+}
+
+/* Scene 6: Gallery */
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 500px;
+}
+
+.polaroid {
+    background: var(--color-white);
+    padding: 10px 10px 20px 10px;
+    border-radius: 4px;
+    box-shadow: var(--shadow-polaroid);
+    width: 140px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.rotate-left { transform: rotate(-4deg); }
+.rotate-right { transform: rotate(4deg); }
+
+.polaroid:hover {
+    transform: scale(1.05) rotate(0deg);
+    z-index: 2;
+}
+
+.polaroid-img-placeholder {
+    width: 100%;
+    height: 120px;
+    background: var(--color-ivory);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-rose-pink);
+    font-size: 14px;
+}
+
+/* Add custom images by overriding style inline or adding class */
+.polaroid-img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    background: var(--color-ivory);
+}
+
+.polaroid-caption {
+    font-family: var(--font-body);
+    font-size: 13px;
+    text-align: center;
+    margin-top: 10px;
+    color: var(--color-charcoal);
+}
+
+.closing-text {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    color: var(--color-deep-rose);
+}
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(248, 201, 212, 0.9);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.lightbox-content {
+    position: relative;
+    background: var(--color-white);
+    padding: 16px 16px 40px 16px;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    max-width: 90%;
+    max-height: 80%;
+}
+
+.close-lightbox {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: var(--color-charcoal);
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.lightbox-img-placeholder {
+    width: 250px;
+    height: 300px;
+    background: var(--color-ivory);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: var(--color-rose-pink);
+}
+
+.lightbox-img {
+    max-width: 100%;
+    max-height: 60vh;
+    object-fit: contain;
+}
+
+.lightbox-caption {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-family: var(--font-body);
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Birthday Jihan!</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./src/styles/tokens.css">
+    <link rel="stylesheet" href="./src/styles/animations.css">
+    <link rel="stylesheet" href="./src/styles/components.css">
+    
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <!-- Audio Element (Source will be added by user in assets/audio/backsound.mp3) -->
+    <audio id="bgMusic" loop>
+        <source src="./assets/audio/HIVI! - Remaja (Official Lyric Video) - HIVI!.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="app">
+        <!-- Scene 1: Envelope -->
+        <section id="scene-envelope" class="scene active">
+            <div class="envelope-container">
+                <div class="envelope-wrapper" id="envelope3d">
+                    <div class="env-back"></div>
+                    <div class="letter-peek">Untuk Jihan</div>
+                    <div class="env-front"></div>
+                    <div class="flap"></div>
+                    <div class="heart-seal">❤️</div>
+                </div>
+            </div>
+            <button class="btn-primary mt-8" id="btn-open-envelope">Buka 💌</button>
+        </section>
+
+        <!-- Scene 2: Cake & Countdown -->
+        <section id="scene-cake" class="scene">
+            <div class="cake-container">
+                <div class="cake">
+                    <div class="candles">
+                        <div class="candle candle-1"><div class="flame"></div></div>
+                        <div class="candle candle-2"><div class="flame"></div></div>
+                        <div class="candle candle-3"><div class="flame"></div></div>
+                    </div>
+                    <div class="tier tier-top">
+                        <div class="icing">
+                            <div class="scallop"></div><div class="scallop"></div><div class="scallop"></div><div class="scallop"></div><div class="scallop"></div>
+                        </div>
+                        <div class="sprinkle s1"></div><div class="sprinkle s2"></div><div class="sprinkle s3"></div>
+                    </div>
+                    <div class="tier tier-bottom">
+                        <div class="icing">
+                            <div class="scallop"></div><div class="scallop"></div><div class="scallop"></div><div class="scallop"></div><div class="scallop"></div><div class="scallop"></div>
+                        </div>
+                        <div class="sprinkle s4"></div><div class="sprinkle s5"></div><div class="sprinkle s6"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="countdown-container" class="countdown-wrapper mt-8">
+                <h3 class="countdown-title">Menuju hari spesial...</h3>
+                <div class="countdown-boxes">
+                    <div class="cd-box"><span id="cd-days">00</span><small>Hari</small></div>
+                    <div class="cd-box"><span id="cd-hours">00</span><small>Jam</small></div>
+                    <div class="cd-box"><span id="cd-minutes">00</span><small>Menit</small></div>
+                    <div class="cd-box"><span id="cd-seconds">00</span><small>Detik</small></div>
+                </div>
+            </div>
+
+            <div id="blow-indicator" class="hidden mt-8 text-center">
+                <p class="instruction-text">🎉 Waktunya tiba! 🎉<br>Tiup lilinnya (gunakan mic) atau tap lilin untuk mematikan!</p>
+                <button class="btn-secondary mt-4" id="btn-enable-mic">🎤 Aktifkan Mic</button>
+            </div>
+        </section>
+
+        <!-- Scene 3: Happy Birthday -->
+        <section id="scene-birthday" class="scene">
+            <h1 class="birthday-title" id="hb-text">Happy Birthday,<br>Jihan!</h1>
+            <div class="sparkles-container">✨ 🎈 🎂 🎈 ✨</div>
+            <button class="btn-primary fade-in-delayed" id="btn-next-birthday">Lanjut ✨</button>
+        </section>
+
+        <!-- Scene 4: Music Experience -->
+        <section id="scene-music" class="scene">
+            <h2 class="section-title">A Song for You</h2>
+            <div class="vinyl-container">
+                <div class="vinyl" id="vinyl-record">
+                    <div class="vinyl-label">🎵</div>
+                </div>
+                <div class="tonearm" id="tonearm"></div>
+            </div>
+            <div class="sound-wave" id="sound-wave">
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            </div>
+            <div class="music-controls">
+                <button class="btn-icon" id="btn-toggle-play">⏸️ Pause</button>
+            </div>
+            <button class="btn-primary mt-8" id="btn-next-music">Baca Surat 💌</button>
+        </section>
+
+        <!-- Scene 5: Letter -->
+        <section id="scene-letter" class="scene">
+            <div class="letter-card">
+                <h2 class="letter-heading">A Letter for You</h2>
+                <div class="letter-content" id="letter-text">
+                    <p>Halo Jihan,</p>
+                    <p>Selamat ulang tahun! 🎉</p>
+                    <p>Semoga di umur yang baru ini, semua impian dan harapanmu bisa tercapai. Teruslah bersinar dan bahagia setiap harinya. Jangan lupa untuk selalu tersenyum dan menikmati setiap momen indah yang datang.</p>
+                    <p>Semoga sehat selalu, dilancarkan segala urusannya, dan dikelilingi oleh orang-orang yang menyayangimu.</p>
+                    <p>Enjoy your special day! 🎂✨</p>
+                </div>
+            </div>
+            <button class="btn-primary mt-8" id="btn-next-letter">Buka Galeri 📸</button>
+        </section>
+
+        <!-- Scene 6: Gallery -->
+        <section id="scene-gallery" class="scene scrollable">
+            <h2 class="section-title">Memories</h2>
+            <div class="gallery-grid">
+                <!-- Placeholders for images -->
+                <div class="polaroid">
+                    <div class="polaroid-img-placeholder">📸 Foto 1</div>
+                    <div class="polaroid-caption">Momen indah 1</div>
+                </div>
+                <div class="polaroid rotate-left">
+                    <div class="polaroid-img-placeholder">📸 Foto 2</div>
+                    <div class="polaroid-caption">Momen indah 2</div>
+                </div>
+                <div class="polaroid rotate-right">
+                    <div class="polaroid-img-placeholder">📸 Foto 3</div>
+                    <div class="polaroid-caption">Momen indah 3</div>
+                </div>
+                <div class="polaroid">
+                    <div class="polaroid-img-placeholder">📸 Foto 4</div>
+                    <div class="polaroid-caption">Momen indah 4</div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8 pb-8">
+                <p class="closing-text">Once again, Happy Birthday! 💖</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Lightbox for Gallery -->
+    <div id="lightbox" class="lightbox hidden">
+        <div class="lightbox-content">
+            <span class="close-lightbox">&times;</span>
+            <div class="lightbox-img-placeholder" id="lightbox-img"></div>
+            <p id="lightbox-caption" class="lightbox-caption"></p>
+        </div>
+    </div>
+
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <!-- JavaScript Files -->
+    <script src="./src/scripts/countdown.js"></script>
+    <script src="./src/scripts/interactions.js"></script>
+    <script src="./src/scripts/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+/* src/styles/animations.css */
+
+/* Floating animation for envelope */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Candle flicker animation */
+@keyframes flicker {
+    0%   { transform: translateX(-50%) scale(1) rotate(0deg); opacity: 0.9; }
+    25%  { transform: translateX(-50%) scale(1.05) rotate(-2deg); opacity: 1; }
+    50%  { transform: translateX(-50%) scale(0.95) rotate(1deg); opacity: 0.8; }
+    75%  { transform: translateX(-50%) scale(1.02) rotate(2deg); opacity: 0.95; }
+    100% { transform: translateX(-50%) scale(1) rotate(0deg); opacity: 0.9; }
+}
+
+@keyframes extinguish {
+    0% { transform: translateX(-50%) scale(1); opacity: 1; }
+    50% { transform: translateX(-50%) scale(0.5) translateY(-10px); opacity: 0.5; }
+    100% { transform: translateX(-50%) scale(0) translateY(-20px); opacity: 0; }
+}
+
+/* Birthday Text Animation */
+.char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.char.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in-delayed {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease-in, visibility 1s ease-in;
+}
+
+.fade-in-delayed.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Vinyl Spin */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Sound Wave Animation */
+@keyframes wave {
+    0% {
+        height: 4px;
+    }
+    100% {
+        height: 24px;
+    }
+}
