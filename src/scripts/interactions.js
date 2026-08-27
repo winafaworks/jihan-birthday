@@ -53,11 +53,27 @@ document.addEventListener('DOMContentLoaded', () => {
         isEnvelopeOpened = true;
         btnOpenEnvelope.style.display = 'none';
         
+        // Helper function for typing animation
+        function startTypingEffect(element, textToType, speed = 90) {
+            if (!element) return;
+            element.innerHTML = '<span class="typing-cursor">|</span>';
+            let i = 0;
+            const timer = setInterval(() => {
+                if (i < textToType.length) {
+                    element.innerHTML = textToType.substring(0, i + 1) + '<span class="typing-cursor">|</span>';
+                    i++;
+                } else {
+                    clearInterval(timer);
+                    element.innerHTML = textToType;
+                }
+            }, speed);
+        }
+
         // GSAP Timeline for Envelope
         const tl = gsap.timeline({
             onComplete: () => {
                 // Wait briefly then go to next scene
-                setTimeout(() => goToScene(1), 500);
+                setTimeout(() => goToScene(1), 600);
             }
         });
         
@@ -73,18 +89,21 @@ document.addEventListener('DOMContentLoaded', () => {
             opacity: 0,
             duration: 0.3
         }, 0.2)
-        // 3. Flap opens backward
+        // 3. Flap opens backward & start typing text
         .to(flap, {
             rotationX: 180,
             z: 3,
             duration: 0.8,
             ease: "power2.inOut",
             onUpdate: function() {
-                // Drop shadow adjusts smoothly
                 const prog = this.progress();
                 flap.style.filter = `drop-shadow(0 ${5 - (10 * prog)}px 8px rgba(0,0,0,0.1))`;
             }
         }, 0.2)
+        .add(() => {
+            const letterTextEl = document.getElementById('letter-peek-text');
+            startTypingEffect(letterTextEl, 'For Jihan ✨', 85);
+        }, 0.4)
         // 4. Letter slides up and pops forward
         .to(letter, {
             y: -70,
@@ -283,5 +302,42 @@ document.addEventListener('DOMContentLoaded', () => {
             lightbox.classList.add('hidden');
         }
     });
+
+    // --- 5. Automatic Custom Cursor Auto-Resizer ---
+    function setupAutoCustomCursor() {
+        const candidatePaths = [
+            './assets/images/cursor.svg.png',
+            './assets/images/cursor.png',
+            './assets/images/cursor.svg'
+        ];
+        
+        function tryLoad(index) {
+            if (index >= candidatePaths.length) return;
+            const img = new Image();
+            img.onload = () => {
+                const c = document.createElement('canvas');
+                c.width = 64;
+                c.height = 64;
+                const ctx = c.getContext('2d');
+                ctx.drawImage(img, 0, 0, 64, 64);
+                const dataUrl = c.toDataURL('image/png');
+                
+                const style = document.createElement('style');
+                style.innerHTML = `
+                    body, html { cursor: url("${dataUrl}") 32 32, auto !important; }
+                    button, a, .polaroid, .cake, .envelope-wrapper, .btn-primary, .btn-secondary, .btn-icon, .close-lightbox {
+                        cursor: url("${dataUrl}") 32 32, pointer !important;
+                    }
+                `;
+                document.head.appendChild(style);
+            };
+            img.onerror = () => tryLoad(index + 1);
+            img.src = candidatePaths[index];
+        }
+        
+        tryLoad(0);
+    }
+    
+    setupAutoCustomCursor();
 
 });

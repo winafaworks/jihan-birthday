@@ -48,11 +48,11 @@ body {
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
     line-height: 1.6;
-    cursor: url('../../assets/images/cursor.png') 16 16, url('../../assets/images/cursor.svg') 10 10, auto;
+    cursor: url('../../assets/images/cursor.svg.png') 16 16, url('../../assets/images/cursor.png') 16 16, url('../../assets/images/cursor.svg') 10 10, auto;
 }
 
 button, a, .polaroid, .cake, .envelope-wrapper, .btn-primary, .btn-secondary, .btn-icon, .close-lightbox {
-    cursor: url('../../assets/images/cursor-pointer.png') 16 16, url('../../assets/images/cursor-pointer.svg') 12 12, pointer !important;
+    cursor: url('../../assets/images/cursor.svg.png') 16 16, url('../../assets/images/cursor-pointer.png') 16 16, url('../../assets/images/cursor-pointer.svg') 12 12, pointer !important;
 }
 
 #app {

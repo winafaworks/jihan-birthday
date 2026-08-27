@@ -120,17 +120,7 @@ function triggerBirthdayAnimation() {
     }, 2000);
 }
 
-// Helper to attach burst on button click before next scene
-function attachBurstAndNext(btnId) {
-    const btn = document.getElementById(btnId);
-    btn?.addEventListener('click', (e) => {
-        if (typeof window.triggerBalloonAndLoveBurst === 'function') {
-            window.triggerBalloonAndLoveBurst(e.clientX, e.clientY);
-        }
-        nextScene();
-    });
-}
-
-attachBurstAndNext('btn-next-birthday');
-attachBurstAndNext('btn-next-music');
-attachBurstAndNext('btn-next-letter');
+// Event Listeners for Navigation
+document.getElementById('btn-next-birthday')?.addEventListener('click', nextScene);
+document.getElementById('btn-next-music')?.addEventListener('click', nextScene);
+document.getElementById('btn-next-letter')?.addEventListener('click', nextScene);
