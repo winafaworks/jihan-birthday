@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <!-- Glowing Hover Pointer -->
+  <circle cx="12" cy="12" r="10" fill="#FF80AB" opacity="0.5"/>
+  <!-- Sparkle Heart -->
+  <path d="M12,4 C8.5,4 6,6.5 6,10 C6,15 12,19.5 12,19.5 C12,19.5 18,15 18,10 C18,6.5 15.5,4 12,4 Z" fill="#E91E63" stroke="#FFF" stroke-width="1.8" stroke-linejoin="round"/>
+  <circle cx="9.5" cy="8" r="1.2" fill="#FFF"/>
+  <!-- Magic sparkles -->
+  <path d="M22,6 L23,8 L25,9 L23,10 L22,12 L21,10 L19,9 L21,8 Z" fill="#FFD54F"/>
+</svg>

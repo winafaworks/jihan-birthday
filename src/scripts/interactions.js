@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const seal = document.querySelector('.heart-seal');
     let isEnvelopeOpened = false;
 
+
+
     // Mouse Parallax Effect for Envelope
     document.addEventListener('mousemove', (e) => {
         if (isEnvelopeOpened || !envelopeWrapper || typeof gsap === 'undefined' || currentSceneIndex !== 0) return;
@@ -37,9 +39,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    btnOpenEnvelope?.addEventListener('click', () => {
+    btnOpenEnvelope?.addEventListener('click', (e) => {
         if (!envelopeWrapper || typeof gsap === 'undefined') return;
         
+        // Trigger Pop-Up Burst of Balloons & Love Hearts!
+        if (typeof window.triggerBalloonAndLoveBurst === 'function') {
+            const rect = btnOpenEnvelope.getBoundingClientRect();
+            const clickX = e.clientX || (rect.left + rect.width / 2);
+            const clickY = e.clientY || rect.top;
+            window.triggerBalloonAndLoveBurst(clickX, clickY);
+        }
+
         isEnvelopeOpened = true;
         btnOpenEnvelope.style.display = 'none';
         

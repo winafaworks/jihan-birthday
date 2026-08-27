@@ -27,7 +27,13 @@
     <div id="app">
         <!-- Scene 1: Envelope -->
         <section id="scene-envelope" class="scene active">
+            <div class="envelope-header text-center">
+                <span class="envelope-badge">Special Delivery 🌸</span>
+                <h2 class="envelope-subtitle">Ada pesan manis untukmu... ✨</h2>
+            </div>
+
             <div class="envelope-container">
+                <div class="envelope-glow"></div>
                 <div class="envelope-wrapper" id="envelope3d">
                     <div class="env-back"></div>
                     <div class="letter-peek">Untuk Jihan</div>
@@ -36,7 +42,7 @@
                     <div class="heart-seal">❤️</div>
                 </div>
             </div>
-            <button class="btn-primary mt-8" id="btn-open-envelope">Buka 💌</button>
+            <button class="btn-primary mt-8" id="btn-open-envelope">Buka Amplop 💌</button>
         </section>
 
         <!-- Scene 2: Cake & Countdown -->
@@ -126,19 +132,19 @@
             <div class="gallery-grid">
                 <!-- Placeholders for images -->
                 <div class="polaroid">
-                    <div class="polaroid-img-placeholder">📸 Foto 1</div>
+                    <img src="./assets/images/photo1.jpeg" alt="Foto 1" class="polaroid-img">
                     <div class="polaroid-caption">Momen indah 1</div>
                 </div>
                 <div class="polaroid rotate-left">
-                    <div class="polaroid-img-placeholder">📸 Foto 2</div>
+                    <img src="./assets/images/photo2.jpeg" alt="Foto 2" class="polaroid-img">
                     <div class="polaroid-caption">Momen indah 2</div>
                 </div>
                 <div class="polaroid rotate-right">
-                    <div class="polaroid-img-placeholder">📸 Foto 3</div>
+                    <img src="./assets/images/photo1.jpeg" alt="Foto 3" class="polaroid-img">
                     <div class="polaroid-caption">Momen indah 3</div>
                 </div>
                 <div class="polaroid">
-                    <div class="polaroid-img-placeholder">📸 Foto 4</div>
+                    <img src="./assets/images/photo2.jpeg" alt="Foto 4" class="polaroid-img">
                     <div class="polaroid-caption">Momen indah 4</div>
                 </div>
             </div>
@@ -162,6 +168,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     
     <!-- JavaScript Files -->
+    <script src="./src/scripts/petals.js"></script>
     <script src="./src/scripts/countdown.js"></script>
     <script src="./src/scripts/interactions.js"></script>
     <script src="./src/scripts/main.js"></script>
