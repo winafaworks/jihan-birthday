@@ -123,43 +123,69 @@ document.addEventListener('DOMContentLoaded', () => {
     let microphone;
     let analyser;
 
+    const btnBlowCandles = document.getElementById('btn-blow-candles');
+
+    function createSmokeParticles() {
+        const wicks = document.querySelectorAll('.wick');
+        wicks.forEach(wick => {
+            for (let i = 0; i < 2; i++) {
+                const smoke = document.createElement('div');
+                smoke.className = 'smoke-particle';
+                smoke.style.animationDelay = `${i * 0.15}s`;
+                wick.appendChild(smoke);
+                setTimeout(() => smoke.remove(), 1600);
+            }
+        });
+    }
+
     function extinguishCandle() {
         const flames = document.querySelectorAll('.flame');
         if (flames.length === 0) return;
         
-        // Check if already extinguished using custom attribute
         if (cake.dataset.extinguished === 'true') return;
         cake.dataset.extinguished = 'true';
-        
+
         if (typeof gsap !== 'undefined') {
-            // GSAP Blow out animation
             gsap.to(flames, {
-                scale: 0,
-                opacity: 0,
-                duration: 0.4,
-                stagger: 0.1,
-                ease: "back.in(2)",
+                rotation: -35,
+                skewX: -20,
+                scaleX: 1.3,
+                duration: 0.2,
+                ease: "power1.out",
                 onComplete: () => {
-                    // Wait a bit, then move to Scene 3
-                    setTimeout(() => {
-                        goToScene(2);
-                    }, 800);
+                    createSmokeParticles();
+                    gsap.to(flames, {
+                        scale: 0,
+                        opacity: 0,
+                        duration: 0.35,
+                        stagger: 0.08,
+                        ease: "back.in(2)",
+                        onComplete: () => {
+                            setTimeout(() => goToScene(2), 700);
+                        }
+                    });
                 }
             });
         } else {
-            // Fallback
+            createSmokeParticles();
             flames.forEach(f => f.classList.add('extinguished'));
-            setTimeout(() => goToScene(2), 1200);
+            setTimeout(() => goToScene(2), 1000);
         }
         
-        // Stop listening to mic if active
         if (audioContext && audioContext.state !== 'closed') {
             audioContext.close();
         }
     }
 
-    // Tap to extinguish
-    cake?.addEventListener('click', extinguishCandle);
+    // Floating blow button click
+    btnBlowCandles?.addEventListener('click', () => {
+        extinguishCandle();
+    });
+
+    // Tap cake to extinguish
+    cake?.addEventListener('click', () => {
+        extinguishCandle();
+    });
 
     // Mic to extinguish (Stretch Goal)
     btnEnableMic?.addEventListener('click', async () => {

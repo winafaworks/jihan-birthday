@@ -69,6 +69,48 @@
     box-shadow: 0 4px 10px rgba(239, 125, 160, 0.35);
 }
 
+.cake-action-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 16px auto 0;
+    z-index: 20;
+}
+
+.btn-blow-floating {
+    animation: floatBlow 2.5s ease-in-out infinite;
+    position: relative;
+    z-index: 20;
+    letter-spacing: 0.5px;
+    font-size: 20px;
+    padding: 14px 30px;
+}
+
+.wind-trail {
+    position: fixed;
+    pointer-events: none;
+    z-index: 999;
+    font-size: 32px;
+    color: rgba(255, 255, 255, 0.9);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9));
+    user-select: none;
+    animation: blowWindGust 0.85s cubic-bezier(0.1, 0.7, 0.4, 1) forwards;
+}
+
+.smoke-particle {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle, rgba(200, 200, 200, 0.75) 0%, rgba(160, 160, 160, 0.25) 60%, transparent 100%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: smokeRise 1.4s ease-out forwards;
+}
+
 .btn-secondary {
     background: transparent;
     color: var(--color-deep-rose);
@@ -259,11 +301,22 @@
 
 .heart-seal {
     position: absolute;
-    top: 105px;
+    top: 90px;
     left: 50%;
     transform: translateX(-50%) translateZ(4px);
-    font-size: 32px;
-    filter: drop-shadow(0 3px 5px rgba(0,0,0,0.2));
+    width: 75px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
+    pointer-events: none;
+}
+
+.seal-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 /* Scene 2: Countdown & Cake */
@@ -417,18 +470,90 @@
 .candle-2 { background: #4FC3F7; height: 50px; margin-top: -5px; }
 .candle-3 { background: #AED581; height: 40px; margin-top: 5px; }
 
-.flame {
-    width: 16px;
-    height: 24px;
-    background: #FFC107;
-    border-radius: 50% 50% 20% 20%;
+.wick {
     position: absolute;
-    top: -28px;
+    top: -8px;
     left: 50%;
     transform: translateX(-50%);
-    box-shadow: 0 0 15px #FFCA28, inset 0 -4px #FF9800;
-    animation: flicker 1.5s infinite;
+    width: 2.5px;
+    height: 8px;
+    background: #3E2723;
+    border-radius: 1px;
 }
+
+.flame {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 18px;
+    height: 28px;
+    pointer-events: none;
+}
+
+.flame-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 45px;
+    height: 45px;
+    background: radial-gradient(circle, rgba(255, 193, 7, 0.75) 0%, rgba(255, 111, 0, 0.3) 50%, transparent 100%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: haloPulse 1.8s infinite ease-in-out;
+}
+
+.flame-outer {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 26px;
+    background: linear-gradient(to top, #FF3D00 0%, #FF9100 45%, #FFD600 85%, #FFF 100%);
+    border-radius: 50% 50% 35% 35% / 60% 60% 40% 40%;
+    filter: drop-shadow(0 0 6px #FF9100);
+    transform-origin: center bottom;
+    animation: flickerOuter 1.2s infinite ease-in-out;
+}
+
+.flame-inner {
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 16px;
+    background: linear-gradient(to top, #FFF9C4 0%, #FFFFFF 100%);
+    border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
+    transform-origin: center bottom;
+    animation: flickerInner 0.9s infinite ease-in-out;
+}
+
+.flame-base {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, #00E5FF 0%, #2979FF 80%, transparent 100%);
+    border-radius: 50%;
+    opacity: 0.85;
+}
+
+/* Staggered flame animations per candle */
+.candle-1 .flame-outer { animation-delay: 0s; }
+.candle-1 .flame-inner { animation-delay: 0.1s; }
+.candle-1 .flame-glow  { animation-delay: 0.2s; }
+
+.candle-2 .flame-outer { animation-delay: 0.35s; }
+.candle-2 .flame-inner { animation-delay: 0.45s; }
+.candle-2 .flame-glow  { animation-delay: 0.55s; }
+
+.candle-3 .flame-outer { animation-delay: 0.7s; }
+.candle-3 .flame-inner { animation-delay: 0.8s; }
+.candle-3 .flame-glow  { animation-delay: 0.9s; }
 
 .flame.extinguished {
     animation: extinguish 0.6s forwards;
