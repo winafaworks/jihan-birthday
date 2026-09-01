@@ -818,3 +818,107 @@
     text-align: center;
     font-family: var(--font-body);
 }
+
+/* Floating Music Widget (Bottom Right) */
+.floating-music-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(248, 201, 212, 0.8);
+    padding: 8px 14px 8px 10px;
+    border-radius: var(--radius-pill);
+    box-shadow: 0 8px 25px rgba(239, 125, 160, 0.28);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+    user-select: none;
+}
+
+.floating-music-widget:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(239, 125, 160, 0.38);
+}
+
+.widget-disc {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #F8A6C1, var(--color-rose-pink));
+    color: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    box-shadow: 0 3px 8px rgba(239, 125, 160, 0.4);
+    animation: spinDisc 4s linear infinite;
+    animation-play-state: paused;
+}
+
+.floating-music-widget.playing .widget-disc {
+    animation-play-state: running;
+}
+
+@keyframes spinDisc {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.widget-info {
+    display: flex;
+    flex-direction: column;
+    max-width: 140px;
+}
+
+.widget-label {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-rose-pink);
+    line-height: 1;
+}
+
+.widget-title {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-charcoal);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+}
+
+.widget-play-btn {
+    background: var(--color-soft-pink);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease;
+    color: var(--color-deep-rose);
+    outline: none;
+}
+
+.widget-play-btn:active {
+    transform: scale(0.9);
+}
+
+/* Custom Bouquet Flower Cursor (Larger 64x64px) */
+html, body {
+    cursor: url('../../assets/images/flower_cursor_64.png') 32 32, url('./assets/images/flower_cursor_64.png') 32 32, auto;
+}
+
+button, a, .polaroid, .cake, .envelope-wrapper, .btn-primary, .btn-secondary, .btn-icon, .close-lightbox, .widget-play-btn {
+    cursor: url('../../assets/images/flower_cursor_64.png') 32 32, url('./assets/images/flower_cursor_64.png') 32 32, pointer !important;
+}

@@ -39,9 +39,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Click envelope wrapper directly to open
+    envelopeWrapper?.addEventListener('click', () => {
+        if (!isEnvelopeOpened && btnOpenEnvelope) {
+            btnOpenEnvelope.click();
+        }
+    });
+
     btnOpenEnvelope?.addEventListener('click', (e) => {
         if (!envelopeWrapper || typeof gsap === 'undefined') return;
         
+        // Auto play Happy Birthday Music on envelope open / button press!
+        playHappyBirthdayMusic();
+
         // Trigger Pop-Up Burst of Balloons & Love Hearts!
         if (typeof window.triggerBalloonAndLoveBurst === 'function') {
             const rect = btnOpenEnvelope.getBoundingClientRect();
@@ -230,12 +240,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // --- 3. Music Player ---
-    const bgMusic = document.getElementById('bgMusic');
+    // --- 3. Music Player & Dual Track Controller ---
+    const bgMusic = document.getElementById('bgMusic');          // Track 1: Happy Birthday
+    const audioRemaja = document.getElementById('audioRemaja');  // Track 2: HIVI! - Remaja
+    
+    const floatingWidget = document.getElementById('floating-music-widget');
+    const widgetSongTitle = document.getElementById('widget-song-title');
+    const btnFloatingToggle = document.getElementById('btn-floating-toggle');
+    const floatingPlayIcon = document.getElementById('floating-play-icon');
+
     const btnTogglePlay = document.getElementById('btn-toggle-play');
     const vinyl = document.getElementById('vinyl-record');
     const soundWave = document.getElementById('sound-wave');
     const btnNextMusic = document.getElementById('btn-next-music');
+
+    let currentTrack = 'birthday'; // 'birthday' or 'remaja'
 
     let vinylTween;
     if (typeof gsap !== 'undefined' && vinyl) {
@@ -248,42 +267,110 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function syncVinylState() {
-        if (bgMusic.paused) {
-            vinyl?.classList.remove('playing');
-            soundWave?.classList.remove('playing');
-            if (vinylTween) vinylTween.pause();
-            if (btnTogglePlay) btnTogglePlay.innerText = '▶️ Play';
-        } else {
+    function getActiveAudio() {
+        return currentTrack === 'birthday' ? bgMusic : audioRemaja;
+    }
+
+    function updateAudioUI() {
+        const activeAudio = getActiveAudio();
+        const isPlaying = activeAudio && !activeAudio.paused;
+
+        // Floating widget sync
+        if (floatingWidget) {
+            if (isPlaying) {
+                floatingWidget.classList.add('playing');
+                if (floatingPlayIcon) floatingPlayIcon.innerText = '⏸️';
+            } else {
+                floatingWidget.classList.remove('playing');
+                if (floatingPlayIcon) floatingPlayIcon.innerText = '▶️';
+            }
+        }
+
+        // Scene 4 vinyl & controls sync
+        if (isPlaying) {
             vinyl?.classList.add('playing');
             soundWave?.classList.add('playing');
             if (vinylTween) vinylTween.play();
             if (btnTogglePlay) btnTogglePlay.innerText = '⏸️ Pause';
+        } else {
+            vinyl?.classList.remove('playing');
+            soundWave?.classList.remove('playing');
+            if (vinylTween) vinylTween.pause();
+            if (btnTogglePlay) btnTogglePlay.innerText = '▶️ Play';
         }
     }
 
-    // Music should start playing when arriving at music scene (or when user clicks next from birthday scene)
-    document.getElementById('btn-next-birthday')?.addEventListener('click', () => {
+    function playHappyBirthdayMusic() {
+        currentTrack = 'birthday';
+        
+        if (audioRemaja) {
+            audioRemaja.pause();
+        }
+
+        if (floatingWidget) {
+            floatingWidget.classList.remove('hidden');
+        }
+        if (widgetSongTitle) {
+            widgetSongTitle.innerText = 'Happy Birthday 🎂';
+        }
+
         if (bgMusic) {
             bgMusic.play().then(() => {
-                syncVinylState();
+                updateAudioUI();
             }).catch(e => {
-                console.log('Autoplay prevented, user must click play manually');
-                syncVinylState();
+                console.log('Autoplay prevented:', e);
+                updateAudioUI();
             });
         }
-    });
+    }
 
-    btnTogglePlay?.addEventListener('click', () => {
-        if (!bgMusic) return;
-        
-        if (bgMusic.paused) {
-            bgMusic.play();
-        } else {
+    window.switchToRemajaSong = function() {
+        currentTrack = 'remaja';
+
+        // Stop Happy Birthday
+        if (bgMusic) {
             bgMusic.pause();
+            bgMusic.currentTime = 0;
         }
-        syncVinylState();
-    });
+
+        // Show floating widget and update title
+        if (floatingWidget) {
+            floatingWidget.classList.remove('hidden');
+        }
+        if (widgetSongTitle) {
+            widgetSongTitle.innerText = 'HIVI! - Remaja 🎵';
+        }
+
+        // Play HIVI! - Remaja
+        if (audioRemaja) {
+            audioRemaja.play().then(() => {
+                updateAudioUI();
+            }).catch(e => {
+                console.log('Autoplay prevented for Remaja:', e);
+                updateAudioUI();
+            });
+        }
+    };
+
+    function toggleActiveAudio() {
+        const activeAudio = getActiveAudio();
+        if (!activeAudio) return;
+
+        if (activeAudio.paused) {
+            activeAudio.play().then(() => updateAudioUI()).catch(e => updateAudioUI());
+        } else {
+            activeAudio.pause();
+            updateAudioUI();
+        }
+    }
+
+    btnFloatingToggle?.addEventListener('click', toggleActiveAudio);
+    btnTogglePlay?.addEventListener('click', toggleActiveAudio);
+
+    bgMusic?.addEventListener('play', updateAudioUI);
+    bgMusic?.addEventListener('pause', updateAudioUI);
+    audioRemaja?.addEventListener('play', updateAudioUI);
+    audioRemaja?.addEventListener('pause', updateAudioUI);
 
 
     // --- 4. Gallery Lightbox ---
@@ -329,39 +416,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 5. Automatic Custom Cursor Auto-Resizer ---
+    // --- 5. Custom Bouquet Flower Cursor Setup ---
     function setupAutoCustomCursor() {
-        const candidatePaths = [
-            './assets/images/cursor.svg.png',
-            './assets/images/cursor.png',
-            './assets/images/cursor.svg'
-        ];
-        
-        function tryLoad(index) {
-            if (index >= candidatePaths.length) return;
-            const img = new Image();
-            img.onload = () => {
-                const c = document.createElement('canvas');
-                c.width = 64;
-                c.height = 64;
-                const ctx = c.getContext('2d');
-                ctx.drawImage(img, 0, 0, 64, 64);
-                const dataUrl = c.toDataURL('image/png');
-                
-                const style = document.createElement('style');
-                style.innerHTML = `
-                    body, html { cursor: url("${dataUrl}") 32 32, auto !important; }
-                    button, a, .polaroid, .cake, .envelope-wrapper, .btn-primary, .btn-secondary, .btn-icon, .close-lightbox {
-                        cursor: url("${dataUrl}") 32 32, pointer !important;
-                    }
-                `;
-                document.head.appendChild(style);
-            };
-            img.onerror = () => tryLoad(index + 1);
-            img.src = candidatePaths[index];
-        }
-        
-        tryLoad(0);
+        const cursorUrl = './assets/images/flower_cursor_64.png';
+        const style = document.createElement('style');
+        style.innerHTML = `
+            html, body {
+                cursor: url("${cursorUrl}") 32 32, auto !important;
+            }
+            button, a, .polaroid, .cake, .envelope-wrapper, .btn-primary, .btn-secondary, .btn-icon, .close-lightbox, .widget-play-btn {
+                cursor: url("${cursorUrl}") 32 32, pointer !important;
+            }
+        `;
+        document.head.appendChild(style);
     }
     
     setupAutoCustomCursor();

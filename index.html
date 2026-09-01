@@ -19,8 +19,12 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
-    <!-- Audio Element (Source will be added by user in assets/audio/backsound.mp3) -->
-    <audio id="bgMusic" loop>
+    <!-- Audio Elements -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="./assets/audio/happy_birthday.wav" type="audio/wav">
+        <source src="./assets/audio/happy_birthday.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="audioRemaja" loop preload="auto">
         <source src="./assets/audio/HIVI! - Remaja (Official Lyric Video) - HIVI!.mp3" type="audio/mpeg">
     </audio>
 
@@ -192,6 +196,18 @@
             <div class="lightbox-img-placeholder" id="lightbox-img"></div>
             <p id="lightbox-caption" class="lightbox-caption"></p>
         </div>
+    </div>
+
+    <!-- Floating Music Widget (Bottom Right) -->
+    <div id="floating-music-widget" class="floating-music-widget hidden">
+        <div class="widget-disc" id="widget-disc">🎵</div>
+        <div class="widget-info">
+            <span class="widget-label">Now Playing</span>
+            <span class="widget-title" id="widget-song-title">Happy Birthday 🎂</span>
+        </div>
+        <button class="widget-play-btn" id="btn-floating-toggle" aria-label="Play/Pause Music">
+            <span id="floating-play-icon">⏸️</span>
+        </button>
     </div>
 
     <!-- GSAP for Animations -->

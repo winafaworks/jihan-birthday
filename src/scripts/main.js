@@ -33,6 +33,11 @@ function goToScene(index) {
               if (scenes[index] === 'scene-birthday') {
                   triggerBirthdayAnimation();
               }
+              if (scenes[index] === 'scene-music') {
+                  if (typeof window.switchToRemajaSong === 'function') {
+                      window.switchToRemajaSong();
+                  }
+              }
               // Add gallery stagger if entering gallery
               if (scenes[index] === 'scene-gallery') {
                   gsap.fromTo('.polaroid', 
