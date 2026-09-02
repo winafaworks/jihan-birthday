@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const bufferLength = analyser.frequencyBinCount;
             const dataArray = new Uint8Array(bufferLength);
             
-            btnEnableMic.innerText = '🎤 Mendengarkan... Tiup!';
+            btnEnableMic.innerText = 'Mendengarkan... Tiup!';
             btnEnableMic.disabled = true;
 
             function checkBlow() {
@@ -291,12 +291,12 @@ document.addEventListener('DOMContentLoaded', () => {
             vinyl?.classList.add('playing');
             soundWave?.classList.add('playing');
             if (vinylTween) vinylTween.play();
-            if (btnTogglePlay) btnTogglePlay.innerText = '⏸️ Pause';
+            if (btnTogglePlay) btnTogglePlay.innerText = 'Pause';
         } else {
             vinyl?.classList.remove('playing');
             soundWave?.classList.remove('playing');
             if (vinylTween) vinylTween.pause();
-            if (btnTogglePlay) btnTogglePlay.innerText = '▶️ Play';
+            if (btnTogglePlay) btnTogglePlay.innerText = 'Play';
         }
     }
 
