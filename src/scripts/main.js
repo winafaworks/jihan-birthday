@@ -80,18 +80,65 @@ document.addEventListener('DOMContentLoaded', () => {
 // Scene 3 logic: Happy Birthday Animation
 function triggerBirthdayAnimation() {
     const textEl = document.getElementById('hb-text');
+    const photoLeft = document.getElementById('scrapbook-photo4');
+    const photoRight = document.getElementById('scrapbook-photo3');
     
-    // GSAP Reveal text with bounce
+    // Reset initial photo positions & visibility
+    if (photoLeft && photoRight && typeof gsap !== 'undefined') {
+        gsap.set(photoLeft, { autoAlpha: 0, x: -300, scale: 0.7, rotation: -20 });
+        gsap.set(photoRight, { autoAlpha: 0, x: 300, scale: 0.7, rotation: 20 });
+        gsap.set('.tape', { scale: 0, opacity: 0 });
+    }
+
+    // Trigger Scrapbook Photos animation after confetti starts (~0.8s delay)
+    if (photoLeft && photoRight && typeof gsap !== 'undefined') {
+        const isMobile = window.innerWidth <= 991;
+        const leftRot = isMobile ? -5 : -7;
+        const rightRot = isMobile ? 5 : 7;
+
+        setTimeout(() => {
+            const photoTl = gsap.timeline();
+            
+            // Photo 4 from Left
+            photoTl.to(photoLeft, {
+                autoAlpha: 1,
+                x: 0,
+                scale: 1,
+                rotation: leftRot,
+                duration: 1.1,
+                ease: "back.out(1.5)"
+            }, 0)
+            // Photo 3 from Right
+            .to(photoRight, {
+                autoAlpha: 1,
+                x: 0,
+                scale: 1,
+                rotation: rightRot,
+                duration: 1.1,
+                ease: "back.out(1.5)"
+            }, 0.25)
+            // Tape sticker pop animation
+            .to('.tape', {
+                scale: 1,
+                opacity: 0.9,
+                duration: 0.6,
+                stagger: 0.15,
+                ease: "elastic.out(1.2, 0.5)"
+            }, 0.6);
+        }, 800);
+    }
+
+    // GSAP Reveal text with elastic bounce
     if (textEl && typeof gsap !== 'undefined') {
         gsap.fromTo(textEl, 
-            { autoAlpha: 0, scale: 0.5 }, 
-            { autoAlpha: 1, scale: 1, duration: 1.5, ease: "elastic.out(1, 0.5)" }
+            { autoAlpha: 0, scale: 0.5, y: -20 }, 
+            { autoAlpha: 1, scale: 1, y: 0, duration: 1.5, ease: "elastic.out(1, 0.5)" }
         );
     }
     
     // Fire confetti using canvas-confetti
     if (typeof confetti === 'function') {
-        const duration = 3000;
+        const duration = 3500;
         const end = Date.now() + duration;
 
         (function frame() {
@@ -116,13 +163,13 @@ function triggerBirthdayAnimation() {
         }());
     }
     
-    // Show next button after delay
+    // Show next button after animation
     setTimeout(() => {
         const btnNext = document.getElementById('btn-next-birthday');
         if (btnNext) {
             btnNext.classList.add('visible');
         }
-    }, 2000);
+    }, 1800);
 }
 
 // Event Listeners for Navigation

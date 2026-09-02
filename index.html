@@ -8,7 +8,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;700&family=Fredoka:wght@500;700&family=Indie+Flower&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- CSS Files -->
     <link rel="stylesheet" href="./src/styles/tokens.css">
@@ -122,7 +122,28 @@
         <!-- Scene 3: Happy Birthday -->
         <section id="scene-birthday" class="scene">
             <h1 class="birthday-title" id="hb-text">Happy Birthday,<br>Jihan!</h1>
-            <div class="sparkles-container">✨ 🎈 🎂 🎈 ✨</div>
+            
+            <!-- Scrapbook Photos Container with Frames -->
+            <div class="birthday-scrapbook-container">
+                <!-- Photo 4 (Left Side) -->
+                <div class="scrapbook-photo photo-left" id="scrapbook-photo4" data-caption="Happy Days 🌸">
+                    <div class="tape tape-yellow"></div>
+                    <div class="scrapbook-frame">
+                        <img src="./assets/images/photo4.png" alt="Jihan Photo 4" class="scrapbook-img">
+                        <div class="scrapbook-caption">Happy Days 🌸</div>
+                    </div>
+                </div>
+
+                <!-- Photo 3 (Right Side) -->
+                <div class="scrapbook-photo photo-right" id="scrapbook-photo3" data-caption="Special Day ✨">
+                    <div class="tape tape-pink"></div>
+                    <div class="scrapbook-frame">
+                        <img src="./assets/images/photo3.png" alt="Jihan Photo 3" class="scrapbook-img">
+                        <div class="scrapbook-caption">Special Day ✨</div>
+                    </div>
+                </div>
+            </div>
+
             <button class="btn-primary fade-in-delayed" id="btn-next-birthday">Lanjut ✨</button>
         </section>
 
@@ -174,11 +195,11 @@
                     <div class="polaroid-caption">Momen indah 2</div>
                 </div>
                 <div class="polaroid rotate-right">
-                    <img src="./assets/images/photo1.jpeg" alt="Foto 3" class="polaroid-img">
+                    <img src="./assets/images/photo3.png" alt="Foto 3" class="polaroid-img">
                     <div class="polaroid-caption">Momen indah 3</div>
                 </div>
                 <div class="polaroid">
-                    <img src="./assets/images/photo2.jpeg" alt="Foto 4" class="polaroid-img">
+                    <img src="./assets/images/photo4.png" alt="Foto 4" class="polaroid-img">
                     <div class="polaroid-caption">Momen indah 4</div>
                 </div>
             </div>

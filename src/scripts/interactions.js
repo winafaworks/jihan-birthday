@@ -373,32 +373,28 @@ document.addEventListener('DOMContentLoaded', () => {
     audioRemaja?.addEventListener('pause', updateAudioUI);
 
 
-    // --- 4. Gallery Lightbox ---
-    const polaroids = document.querySelectorAll('.polaroid');
+    // --- 4. Gallery & Scrapbook Lightbox ---
+    const clickablePhotos = document.querySelectorAll('.polaroid, .scrapbook-photo');
     const lightbox = document.getElementById('lightbox');
     const closeLightbox = document.querySelector('.close-lightbox');
     
-    polaroids.forEach(p => {
+    clickablePhotos.forEach(p => {
         p.addEventListener('click', () => {
-            // Just display the lightbox placeholder for now
             if (lightbox) {
                 lightbox.classList.remove('hidden');
                 
-                // Get caption from polaroid
-                const captionEl = p.querySelector('.polaroid-caption');
+                // Get caption from polaroid or scrapbook
+                const captionEl = p.querySelector('.polaroid-caption, .scrapbook-caption');
                 const lbCaption = document.getElementById('lightbox-caption');
                 if (captionEl && lbCaption) {
-                    lbCaption.innerText = captionEl.innerText;
+                    lbCaption.innerText = p.dataset.caption || captionEl.innerText;
                 }
 
-                // If user added img tags later, we can sync the src here
+                // Sync img src
                 const imgEl = p.querySelector('img');
                 const lbImgPlaceholder = document.getElementById('lightbox-img');
                 if (imgEl && lbImgPlaceholder) {
                     lbImgPlaceholder.innerHTML = `<img src="${imgEl.src}" class="lightbox-img">`;
-                } else {
-                    // Fallback to placeholder text
-                    lbImgPlaceholder.innerText = p.querySelector('.polaroid-img-placeholder')?.innerText || 'Foto';
                 }
             }
         });

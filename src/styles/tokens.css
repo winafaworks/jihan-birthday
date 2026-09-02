@@ -1,4 +1,27 @@
-/* src/styles/tokens.css */
+/* Font Declarations */
+@font-face {
+    font-family: 'Spheris';
+    src: url('../../assets/fonts/Spheris.ttf') format('truetype'),
+         url('../../assets/fonts/Spheris.otf') format('opentype'),
+         url('../../assets/fonts/spheris.ttf') format('truetype'),
+         url('../../assets/fonts/spheris.otf') format('opentype'),
+         url('../../assets/fonts/Spheris-Regular.ttf') format('truetype'),
+         url('../../assets/fonts/Spheris-Regular.otf') format('opentype'),
+         local('Spheris'), local('Spheris Regular'), local('Spheris-Regular');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Avermont House';
+    src: url('../../assets/fonts/AvermontHouse_PERSONAL_USE_ONLY.otf') format('opentype'),
+         local('Avermont House'), local('AvermontHouse');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     /* Colors (from design.md) */
     --color-bone-white: #FAF7F2;
@@ -11,7 +34,7 @@
     --color-white: #FFFFFF;
 
     /* Typography */
-    --font-heading: 'Indie Flower', cursive;
+    --font-heading: 'Spheris', 'Fredoka', 'Comfortaa', 'Quicksand', sans-serif;
     --font-body: 'Quicksand', sans-serif;
 
     /* Spacing */
