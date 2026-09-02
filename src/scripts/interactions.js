@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // --- 4. Gallery & Scrapbook Lightbox ---
-    const clickablePhotos = document.querySelectorAll('.polaroid, .scrapbook-photo');
+    const clickablePhotos = document.querySelectorAll('.hanging-polaroid, .polaroid, .scrapbook-photo');
     const lightbox = document.getElementById('lightbox');
     const closeLightbox = document.querySelector('.close-lightbox');
     

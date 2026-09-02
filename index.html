@@ -125,21 +125,21 @@
             
             <!-- Scrapbook Photos Container with Frames -->
             <div class="birthday-scrapbook-container">
-                <!-- Photo 4 (Left Side) -->
-                <div class="scrapbook-photo photo-left" id="scrapbook-photo4" data-caption="Happy Days 🌸">
+                <!-- Photo 4 (Left Side: how it's start) -->
+                <div class="scrapbook-photo photo-left" id="scrapbook-photo4" data-caption="how it's start">
                     <div class="tape tape-yellow"></div>
                     <div class="scrapbook-frame">
                         <img src="./assets/images/photo4.png" alt="Jihan Photo 4" class="scrapbook-img">
-                        <div class="scrapbook-caption">Happy Days 🌸</div>
+                        <div class="scrapbook-caption">how it's start</div>
                     </div>
                 </div>
 
-                <!-- Photo 3 (Right Side) -->
-                <div class="scrapbook-photo photo-right" id="scrapbook-photo3" data-caption="Special Day ✨">
+                <!-- Photo 3 (Right Side: how it's going) -->
+                <div class="scrapbook-photo photo-right" id="scrapbook-photo3" data-caption="how it's going">
                     <div class="tape tape-pink"></div>
                     <div class="scrapbook-frame">
                         <img src="./assets/images/photo3.png" alt="Jihan Photo 3" class="scrapbook-img">
-                        <div class="scrapbook-caption">Special Day ✨</div>
+                        <div class="scrapbook-caption">how it's going</div>
                     </div>
                 </div>
             </div>
@@ -177,33 +177,381 @@
             <button class="btn-primary mt-8" id="btn-next-letter">Buka Galeri</button>
         </section>
 
-        <!-- Scene 6: Gallery -->
+        <!-- Scene 6: Gallery (Hanging String & Marquee Animation) -->
         <section id="scene-gallery" class="scene scrollable">
             <h2 class="section-title">Memories</h2>
-            <div class="gallery-grid">
-                <!-- Placeholders for images -->
-                <div class="polaroid">
-                    <img src="./assets/images/photo1.jpeg" alt="Foto 1" class="polaroid-img">
-                    <div class="polaroid-caption">Momen indah 1</div>
-                </div>
-                <div class="polaroid rotate-left">
-                    <img src="./assets/images/photo5.jpeg" alt="Foto 2" class="polaroid-img">
-                    <div class="polaroid-caption">Momen indah 2</div>
-                </div>
-                <div class="polaroid rotate-right">
-                    <img src="./assets/images/photo7.jpeg" alt="Foto 3" class="polaroid-img">
-                    <div class="polaroid-caption">Momen indah 3</div>
-                </div>
-                <div class="polaroid rotate-left">
-                    <img src="./assets/images/photo8.jpeg" alt="Foto 4" class="polaroid-img">
-                    <div class="polaroid-caption">Momen indah 4</div>
-                </div>
-                <div class="polaroid rotate-right">
-                    <img src="./assets/images/photo9.jpeg" alt="Foto 5" class="polaroid-img">
-                    <div class="polaroid-caption">Momen indah 5</div>
+            
+            <!-- Hanging Clothesline / String Gallery -->
+            <div class="hanging-gallery-container">
+                <!-- Wavy String Background -->
+                <div class="hanging-string"></div>
+                
+                <!-- Infinite Marquee Wrapper (Right to Left) -->
+                <div class="gallery-marquee-wrapper">
+                    <div class="gallery-marquee-track">
+                        <!-- SET A -->
+                        <div class="marquee-set">
+                            <div class="hanging-polaroid pos-high" data-caption="the prettiest">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo1.jpeg" alt="Momen 1" class="polaroid-img">
+                                    <div class="polaroid-caption">the prettiest</div>
+                                </div>
+                            </div>
+
+                            <div class="hanging-polaroid pos-low rotate-left" data-caption="sweetest smile">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo5.jpeg" alt="Momen 2" class="polaroid-img">
+                                    <div class="polaroid-caption">sweetest smile</div>
+                                </div>
+                            </div>
+
+                            <div class="hanging-polaroid pos-mid rotate-right" data-caption="nap time with big bro">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo7.jpeg" alt="Momen 3" class="polaroid-img">
+                                    <div class="polaroid-caption">nap time with big bro</div>
+                                </div>
+                            </div>
+
+                            <div class="hanging-polaroid pos-high rotate-left" data-caption="cute kiddo">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo8.jpeg" alt="Momen 4" class="polaroid-img">
+                                    <div class="polaroid-caption">cute kiddo</div>
+                                </div>
+                            </div>
+
+                            <div class="hanging-polaroid pos-low rotate-right" data-caption="playtime">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo9.jpeg" alt="Momen 5" class="polaroid-img">
+                                    <div class="polaroid-caption">playtime</div>
+                                </div>
+                            </div>
+
+                            <div class="hanging-polaroid pos-mid rotate-left" data-caption="happy moments">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo2.jpeg" alt="Momen 6" class="polaroid-img">
+                                    <div class="polaroid-caption">happy moments</div>
+                                </div>
+                            </div>
+
+                            <div class="hanging-polaroid pos-high rotate-right" data-caption="lovely memories">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo6.jpeg" alt="Momen 7" class="polaroid-img">
+                                    <div class="polaroid-caption">lovely memories</div>
+                                </div>
+                            </div>
+
+                            <div class="hanging-polaroid pos-low rotate-left" data-caption="little Jihan 🌸">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo3.png" alt="Momen 8" class="polaroid-img">
+                                    <div class="polaroid-caption">little Jihan 🌸</div>
+                                </div>
+                            </div>
+
+                            <div class="hanging-polaroid pos-mid rotate-right" data-caption="sweet 17 💖">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo4.png" alt="Momen 9" class="polaroid-img">
+                                    <div class="polaroid-caption">sweet 17 💖</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SET B -->
+                        <div class="marquee-set">
+                            <div class="hanging-polaroid pos-high" data-caption="the prettiest">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo1.jpeg" alt="Momen 1" class="polaroid-img">
+                                    <div class="polaroid-caption">the prettiest</div>
+                                </div>
+                            </div>
+
+                            <div class="hanging-polaroid pos-low rotate-left" data-caption="sweetest smile">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo5.jpeg" alt="Momen 2" class="polaroid-img">
+                                    <div class="polaroid-caption">sweetest smile</div>
+                                </div>
+                            </div>
+
+                            <div class="hanging-polaroid pos-mid rotate-right" data-caption="nap time with big bro">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo7.jpeg" alt="Momen 3" class="polaroid-img">
+                                    <div class="polaroid-caption">nap time with big bro</div>
+                                </div>
+                            </div>
+
+                            <div class="hanging-polaroid pos-high rotate-left" data-caption="cute kiddo">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo8.jpeg" alt="Momen 4" class="polaroid-img">
+                                    <div class="polaroid-caption">cute kiddo</div>
+                                </div>
+                            </div>
+
+                            <div class="hanging-polaroid pos-low rotate-right" data-caption="playtime">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo9.jpeg" alt="Momen 5" class="polaroid-img">
+                                    <div class="polaroid-caption">playtime</div>
+                                </div>
+                            </div>
+
+                            <div class="hanging-polaroid pos-mid rotate-left" data-caption="happy moments">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo2.jpeg" alt="Momen 6" class="polaroid-img">
+                                    <div class="polaroid-caption">happy moments</div>
+                                </div>
+                            </div>
+
+                            <div class="hanging-polaroid pos-high rotate-right" data-caption="lovely memories">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo6.jpeg" alt="Momen 7" class="polaroid-img">
+                                    <div class="polaroid-caption">lovely memories</div>
+                                </div>
+                            </div>
+
+                            <div class="hanging-polaroid pos-low rotate-left" data-caption="little Jihan 🌸">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo3.png" alt="Momen 8" class="polaroid-img">
+                                    <div class="polaroid-caption">little Jihan 🌸</div>
+                                </div>
+                            </div>
+
+                            <div class="hanging-polaroid pos-mid rotate-right" data-caption="sweet 17 💖">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo4.png" alt="Momen 9" class="polaroid-img">
+                                    <div class="polaroid-caption">sweet 17 💖</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SET C -->
+                        <div class="marquee-set">
+                            <div class="hanging-polaroid pos-high" data-caption="the prettiest">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo1.jpeg" alt="Momen 1" class="polaroid-img">
+                                    <div class="polaroid-caption">the prettiest</div>
+                                </div>
+                            </div>
+
+                            <div class="hanging-polaroid pos-low rotate-left" data-caption="sweetest smile">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo5.jpeg" alt="Momen 2" class="polaroid-img">
+                                    <div class="polaroid-caption">sweetest smile</div>
+                                </div>
+                            </div>
+
+                            <div class="hanging-polaroid pos-mid rotate-right" data-caption="nap time with big bro">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo7.jpeg" alt="Momen 3" class="polaroid-img">
+                                    <div class="polaroid-caption">nap time with big bro</div>
+                                </div>
+                            </div>
+
+                            <div class="hanging-polaroid pos-high rotate-left" data-caption="cute kiddo">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo8.jpeg" alt="Momen 4" class="polaroid-img">
+                                    <div class="polaroid-caption">cute kiddo</div>
+                                </div>
+                            </div>
+
+                            <div class="hanging-polaroid pos-low rotate-right" data-caption="playtime">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo9.jpeg" alt="Momen 5" class="polaroid-img">
+                                    <div class="polaroid-caption">playtime</div>
+                                </div>
+                            </div>
+
+                            <div class="hanging-polaroid pos-mid rotate-left" data-caption="happy moments">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo2.jpeg" alt="Momen 6" class="polaroid-img">
+                                    <div class="polaroid-caption">happy moments</div>
+                                </div>
+                            </div>
+
+                            <div class="hanging-polaroid pos-high rotate-right" data-caption="lovely memories">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo6.jpeg" alt="Momen 7" class="polaroid-img">
+                                    <div class="polaroid-caption">lovely memories</div>
+                                </div>
+                            </div>
+
+                            <div class="hanging-polaroid pos-low rotate-left" data-caption="little Jihan 🌸">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo3.png" alt="Momen 8" class="polaroid-img">
+                                    <div class="polaroid-caption">little Jihan 🌸</div>
+                                </div>
+                            </div>
+
+                            <div class="hanging-polaroid pos-mid rotate-right" data-caption="sweet 17 💖">
+                                <div class="clip-container">
+                                    <svg class="binder-clip-svg" viewBox="0 0 60 70" width="38" height="46">
+                                        <path d="M 22 28 L 22 10 A 8 8 0 0 1 38 10 L 38 28" fill="none" stroke="#e0e0e0" stroke-width="3.5"/>
+                                        <path d="M 12 28 L 48 28 L 44 48 L 16 48 Z" fill="#EF7DA0" stroke="#C24170" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="polaroid">
+                                    <img src="./assets/images/photo4.png" alt="Momen 9" class="polaroid-img">
+                                    <div class="polaroid-caption">sweet 17 💖</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
+
             <div class="text-center mt-8 pb-8">
                 <p class="closing-text">Once again, Happy Birthday! 💖</p>
             </div>

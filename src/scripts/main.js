@@ -80,8 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // Scene 3 logic: Happy Birthday Animation
 function triggerBirthdayAnimation() {
     const textEl = document.getElementById('hb-text');
-    const photoLeft = document.getElementById('scrapbook-photo4');
-    const photoRight = document.getElementById('scrapbook-photo3');
+    const photoLeft = document.querySelector('#scene-birthday .photo-left');
+    const photoRight = document.querySelector('#scene-birthday .photo-right');
     
     // Reset initial photo positions & visibility
     if (photoLeft && photoRight && typeof gsap !== 'undefined') {

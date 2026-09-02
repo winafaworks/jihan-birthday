@@ -850,13 +850,101 @@
     margin-bottom: 12px;
 }
 
-/* Scene 6: Gallery */
-.gallery-grid {
+/* Scene 6: Hanging Clothesline Gallery & Continuous Marquee */
+.hanging-gallery-container {
+    position: relative;
+    width: 100%;
+    max-width: 100vw;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.hanging-string {
+    position: absolute;
+    top: 36px;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 40' preserveAspectRatio='none'%3E%3Cpath d='M0,20 Q150,38 300,20 T600,20 T900,20 T1200,20' fill='none' stroke='%23ffffff' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: 1200px 40px;
+    z-index: 2;
+    pointer-events: none;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
+
+.gallery-marquee-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 10px 0 40px 0;
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    max-width: 580px;
+    align-items: center;
+}
+
+.gallery-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marqueeRightToLeft 32s linear infinite;
+    will-change: transform;
+}
+
+.marquee-set {
+    display: flex;
+    gap: 36px;
+    padding-right: 36px;
+}
+
+@keyframes marqueeRightToLeft {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-33.333333%, 0, 0);
+    }
+}
+
+.hanging-polaroid {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 3;
+}
+
+.clip-container {
+    position: relative;
+    z-index: 10;
+    margin-bottom: -18px;
+    pointer-events: none;
+}
+
+.binder-clip-svg {
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.2));
+    transition: transform 0.3s ease;
+}
+
+.hanging-polaroid.pos-high {
+    margin-top: 0px;
+}
+
+.hanging-polaroid.pos-low {
+    margin-top: 35px;
+}
+
+.hanging-polaroid.pos-mid {
+    margin-top: 18px;
+}
+
+.hanging-polaroid:hover {
+    transform: scale(1.08) translateY(-8px) rotate(0deg) !important;
+    z-index: 20 !important;
+}
+
+.hanging-polaroid:hover .binder-clip-svg {
+    transform: scale(1.15);
 }
 
 .polaroid {
@@ -864,7 +952,7 @@
     padding: 10px 10px 20px 10px;
     border-radius: 4px;
     box-shadow: var(--shadow-polaroid);
-    width: 140px;
+    width: 155px;
     transition: transform 0.3s ease;
     cursor: pointer;
 }
