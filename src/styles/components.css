@@ -301,16 +301,18 @@
 
 .heart-seal {
     position: absolute;
-    top: 90px;
+    top: 60px;
     left: 50%;
-    transform: translateX(-50%) translateZ(4px);
-    width: 75px;
-    height: 60px;
+    transform: translateX(-50%) translateZ(25px);
+    z-index: 999;
+    width: 140px;
+    height: 140px;
     display: flex;
     align-items: center;
     justify-content: center;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
+    filter: drop-shadow(0 6px 14px rgba(0,0,0,0.25));
     pointer-events: none;
+    transition: transform 0.3s ease;
 }
 
 .seal-img {
