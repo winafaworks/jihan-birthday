@@ -379,33 +379,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // --- 4. Gallery & Scrapbook Lightbox ---
-    const clickablePhotos = document.querySelectorAll('.hanging-polaroid, .polaroid, .scrapbook-photo');
     const lightbox = document.getElementById('lightbox');
     const closeLightbox = document.querySelector('.close-lightbox');
     
-    clickablePhotos.forEach(p => {
-        p.addEventListener('click', () => {
-            if (lightbox) {
-                lightbox.classList.remove('hidden');
-                
-                // Get caption from polaroid or scrapbook
-                const captionEl = p.querySelector('.polaroid-caption, .scrapbook-caption');
-                const lbCaption = document.getElementById('lightbox-caption');
-                if (captionEl && lbCaption) {
-                    lbCaption.innerText = p.dataset.caption || captionEl.innerText;
-                }
+    document.addEventListener('click', (e) => {
+        const targetCard = e.target.closest('.hanging-polaroid, .scrapbook-photo');
+        if (!targetCard) return;
 
-                // Sync img src
-                const imgEl = p.querySelector('img');
-                const lbImgPlaceholder = document.getElementById('lightbox-img');
-                if (imgEl && lbImgPlaceholder) {
-                    lbImgPlaceholder.innerHTML = `<img src="${imgEl.src}" class="lightbox-img">`;
-                }
+        // Ignore clicks directly on close button or lightbox itself
+        if (e.target.closest('#lightbox')) return;
+
+        if (lightbox) {
+            lightbox.classList.remove('hidden');
+            
+            // Get caption from polaroid or scrapbook
+            const captionEl = targetCard.querySelector('.polaroid-caption, .scrapbook-caption');
+            const lbCaption = document.getElementById('lightbox-caption');
+            if (lbCaption) {
+                lbCaption.innerText = targetCard.dataset.caption || (captionEl ? captionEl.innerText : '');
             }
-        });
+
+            // Get actual photo image (specifically target photo image, NEVER the clip image)
+            const imgEl = targetCard.querySelector('.polaroid-img, .scrapbook-img') || targetCard.querySelector('img.polaroid-img');
+            const lbImgPlaceholder = document.getElementById('lightbox-img');
+            if (imgEl && lbImgPlaceholder) {
+                lbImgPlaceholder.innerHTML = `<img src="${imgEl.src}" class="lightbox-img">`;
+            }
+        }
     });
 
-    closeLightbox?.addEventListener('click', () => {
+    closeLightbox?.addEventListener('click', (e) => {
+        e.stopPropagation();
         if (lightbox) {
             lightbox.classList.add('hidden');
         }

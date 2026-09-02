@@ -1,7 +1,7 @@
 // src/scripts/countdown.js
 
-const targetMonth = (new Date()).getMonth(); // Set to current month for D-Day preview
-const targetDate = (new Date()).getDate();   // Set to current date for D-Day preview
+const targetMonth = 11; // 0-indexed, so 11 = December
+const targetDate = 14;
 
 function getNextBirthdayDate() {
     const now = new Date();
