@@ -861,16 +861,16 @@
 
 .hanging-string {
     position: absolute;
-    top: 36px;
+    top: 48px;
     left: 0;
     width: 100%;
-    height: 40px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 40' preserveAspectRatio='none'%3E%3Cpath d='M0,20 Q150,38 300,20 T600,20 T900,20 T1200,20' fill='none' stroke='%23ffffff' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
+    height: 30px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 30' preserveAspectRatio='none'%3E%3Cpath d='M0,15 L1200,15' fill='none' stroke='%23ffffff' stroke-width='4.5' stroke-linecap='round'/%3E%3C/svg%3E");
     background-repeat: repeat-x;
-    background-size: 1200px 40px;
-    z-index: 2;
+    background-size: 1200px 30px;
+    z-index: 5;
     pointer-events: none;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
 
 .gallery-marquee-wrapper {
@@ -917,34 +917,32 @@
 .clip-container {
     position: relative;
     z-index: 10;
-    margin-bottom: -18px;
+    margin-bottom: -115px;
     pointer-events: none;
+    display: flex;
+    justify-content: center;
 }
 
-.binder-clip-svg {
-    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.2));
+.binder-clip-img {
+    width: 150px;
+    height: auto;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
     transition: transform 0.3s ease;
 }
 
-.hanging-polaroid.pos-high {
-    margin-top: 0px;
+.hanging-polaroid:hover .binder-clip-img {
+    transform: scale(1.15);
 }
 
-.hanging-polaroid.pos-low {
-    margin-top: 35px;
-}
-
+.hanging-polaroid.pos-high,
+.hanging-polaroid.pos-low,
 .hanging-polaroid.pos-mid {
-    margin-top: 18px;
+    margin-top: 0px;
 }
 
 .hanging-polaroid:hover {
     transform: scale(1.08) translateY(-8px) rotate(0deg) !important;
     z-index: 20 !important;
-}
-
-.hanging-polaroid:hover .binder-clip-svg {
-    transform: scale(1.15);
 }
 
 .polaroid {
@@ -1164,6 +1162,39 @@ html, body {
     cursor: url('../../assets/images/flower_cursor_64.png') 32 32, url('./assets/images/flower_cursor_64.png') 32 32, auto;
 }
 
-button, a, .polaroid, .cake, .envelope-wrapper, .btn-primary, .btn-secondary, .btn-icon, .close-lightbox, .widget-play-btn {
+button, a, .polaroid, .cake, .envelope-wrapper, .btn-primary, .btn-secondary, .btn-icon, .close-lightbox, .widget-play-btn, .floating-watermark {
     cursor: url('../../assets/images/flower_cursor_64.png') 32 32, url('./assets/images/flower_cursor_64.png') 32 32, pointer !important;
+}
+
+/* Floating Watermark Widget (Bottom Left) */
+.floating-watermark {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(220, 200, 210, 0.3);
+    border-radius: 50px;
+    padding: 6px 16px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    color: #8c7380;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    opacity: 0.45;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.floating-watermark:hover {
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--color-pink-primary);
+    opacity: 1;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(224, 112, 156, 0.2);
+    border-color: var(--color-pink-primary);
 }

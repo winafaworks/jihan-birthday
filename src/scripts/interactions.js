@@ -219,13 +219,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 analyser.getByteFrequencyData(dataArray);
                 let sum = 0;
+                let highFreqSum = 0;
                 for(let i = 0; i < bufferLength; i++) {
                     sum += dataArray[i];
+                    if (i > bufferLength * 0.3) {
+                        highFreqSum += dataArray[i];
+                    }
                 }
                 const average = sum / bufferLength;
+                const highFreqAverage = highFreqSum / (bufferLength * 0.7);
 
-                // Threshold for blowing (may vary per device, 100 is generally ok for blowing close to mic)
-                if (average > 100) {
+                // Sensitive threshold (40) suitable for earphone Mics, Bluetooth headsets, and mobile Mics
+                if (average > 40 || highFreqAverage > 45) {
                     extinguishCandle();
                 } else {
                     requestAnimationFrame(checkBlow);
