@@ -50,7 +50,7 @@ background: linear-gradient(135deg, #F8A6C1 0%, #EF7DA0 100%);
 
 ### Font Utama: **Indie Flower** (Google Fonts)
 
-Dipakai untuk elemen yang butuh nuansa "tulisan tangan personal": judul, headline animasi ("Happy Birthday, Jihan!"), label tombol, quote/aksen singkat.
+Dipakai untuk elemen yang butuh nuansa "tulisan tangan personal": judul, headline animasi ("Happy Birthday, Keonho!"), label tombol, quote/aksen singkat.
 
 ```html
 <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
@@ -71,7 +71,7 @@ Indie Flower adalah font *script/handwriting* — sangat cocok untuk judul singk
 
 | Elemen | Font | Size (mobile) | Size (desktop) | Weight |
 |---|---|---|---|---|
-| Hero title ("Happy Birthday, Jihan!") | Indie Flower | 40px | 64px | Regular |
+| Hero title ("Happy Birthday, Keonho!") | Indie Flower | 40px | 64px | Regular |
 | Section heading | Indie Flower | 28px | 36px | Regular |
 | Sub-heading / label kecil | Indie Flower | 18px | 20px | Regular |
 | Body text (surat, deskripsi) | Quicksand/Poppins | 16px | 17px | Regular/Medium |

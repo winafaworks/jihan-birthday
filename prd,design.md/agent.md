@@ -1,6 +1,6 @@
 # AGENT.md — Panduan untuk AI Coding Agent
 
-Dokumen ini adalah konteks kerja untuk AI agent (Claude Code, Cursor, dsb.) yang akan membangun/mengembangkan project **Website Ucapan Ulang Tahun Interaktif untuk Jihan**. Baca dokumen ini dulu sebelum mulai menulis kode.
+Dokumen ini adalah konteks kerja untuk AI agent (Claude Code, Cursor, dsb.) yang akan membangun/mengembangkan project **Website Ucapan Ulang Tahun Interaktif untuk Keonho**. Baca dokumen ini dulu sebelum mulai menulis kode.
 
 ## 1. Dokumen Acuan (Wajib Dibaca Dulu)
 
@@ -17,7 +17,7 @@ Single-page website, mobile-first, berisi 6 scene berurutan yang harus dilalui s
 
 1. Envelope 3D (landing) → tap buka
 2. Kue interaktif + countdown ke ulang tahun berikutnya (14 Desember) → tiup lilin
-3. Animasi "Happy Birthday, Jihan!" (muncul otomatis begitu tanggal target terpenuhi)
+3. Animasi "Happy Birthday, Keonho!" (muncul otomatis begitu tanggal target terpenuhi)
 4. Music player (vinyl + sound wave), lagu favorit
 5. Ucapan/surat personal
 6. Galeri foto (gaya polaroid)
@@ -90,7 +90,7 @@ Bangun sesuai urutan fungsi, bukan urutan visual, supaya bisa ditest bertahap:
 
 Sebelum final, pastikan item berikut sudah diganti dari placeholder (lihat `prd.md` §10):
 
-- [ ] Nama penerima: "Jihan" (cek apakah perlu diganti/dikonfirmasi ejaannya)
+- [ ] Nama penerima: "Keonho" (cek apakah perlu diganti/dikonfirmasi ejaannya)
 - [ ] Tanggal target countdown — **konfirmasi ulang asumsi di `prd.md` §11 sebelum hardcode tanggal**
 - [ ] File lagu (mp3) — belum ada, jangan commit lagu berhak cipta ke repo publik
 - [ ] Foto-foto galeri — belum ada, gunakan placeholder image dulu saat development

@@ -1,4 +1,4 @@
-# PRD — Website Ucapan Ulang Tahun Interaktif "Untuk Jihan"
+# PRD — Website Ucapan Ulang Tahun Interaktif "Untuk Keonho"
 
 | | |
 |---|---|
@@ -11,7 +11,7 @@
 
 ## 1. Ringkasan Produk
 
-Website ucapan ulang tahun personal untuk **Jihan**, berbentuk single-page interaktif yang dibuka lewat link (dibagikan via WhatsApp/Instagram). Pengalaman dirancang seperti "membuka hadiah/surat" secara bertahap: mulai dari amplop 3D, kue interaktif dengan hitung mundur, animasi ucapan selamat ulang tahun, pemutaran lagu favorit, surat/ucapan personal, hingga galeri foto kenangan.
+Website ucapan ulang tahun personal untuk **Keonho**, berbentuk single-page interaktif yang dibuka lewat link (dibagikan via WhatsApp/Instagram). Pengalaman dirancang seperti "membuka hadiah/surat" secara bertahap: mulai dari amplop 3D, kue interaktif dengan hitung mundur, animasi ucapan selamat ulang tahun, pemutaran lagu favorit, surat/ucapan personal, hingga galeri foto kenangan.
 
 Referensi gaya visual: template scrapbook/letter (lihat gambar acuan yang dilampirkan user), namun dengan palet warna **pink & putih tulang** serta font **Indie Flower** (detail di `design.md`).
 
@@ -26,7 +26,7 @@ Referensi gaya visual: template scrapbook/letter (lihat gambar acuan yang dilamp
 
 | Peran | Deskripsi |
 |---|---|
-| Primary user | Jihan — penerima ucapan |
+| Primary user | Keonho — penerima ucapan |
 | Sender/owner | User (kamu) — sekali setup konten, tidak perlu maintenance berkala |
 | Perangkat utama | Smartphone (Android/iOS browser) |
 | Perangkat sekunder | Desktop/tablet — tetap harus berfungsi baik |
@@ -46,7 +46,7 @@ Alur bersifat **linear, satu arah**, setiap fase punya tombol "lanjut" agar user
         ↓ tap "Buka"
 [2. Interactive Cake + Countdown]
         ↓ (jika sudah tanggal target)
-[3. Animasi "Happy Birthday, Jihan!"]
+[3. Animasi "Happy Birthday, Keonho!"]
         ↓ tap "Lanjut"
 [4. Music Experience: vinyl / sound wave]
         ↓ (musik terus main di background, atau tap "Lanjut")
@@ -95,9 +95,9 @@ Layar ini punya **dua state**, tergantung waktu saat website diakses:
 - [ ] Jika user membuka website setelah tanggal target, countdown tidak muncul — langsung ke state Birthday.
 - [ ] Interaksi tiup lilin memberi feedback visual jelas (lilin padam + partikel asap).
 
-### 6.3 Layar 3 — Animasi "Happy Birthday, Jihan!"
+### 6.3 Layar 3 — Animasi "Happy Birthday, Keonho!"
 
-**Deskripsi:** Muncul saat kondisi tanggal sudah terpenuhi (atau setelah lilin ditiup). Teks besar "Happy Birthday, Jihan!" muncul dengan animasi reveal, disertai efek confetti/hati/sparkle.
+**Deskripsi:** Muncul saat kondisi tanggal sudah terpenuhi (atau setelah lilin ditiup). Teks besar "Happy Birthday, Keonho!" muncul dengan animasi reveal, disertai efek confetti/hati/sparkle.
 
 **Requirement:**
 - Teks menggunakan font Indie Flower, animasi muncul huruf-per-huruf atau fade+scale.
@@ -161,14 +161,14 @@ Layar ini punya **dua state**, tergantung waktu saat website diakses:
 | FR-03 | Kue dengan lilin menyala + interaksi tiup (blow out) | Must have |
 | FR-04 | Countdown real-time (hari/jam/menit/detik) ke tanggal target | Must have |
 | FR-05 | Auto-switch ke state "Happy Birthday" saat tanggal terpenuhi | Must have |
-| FR-06 | Animasi teks "Happy Birthday, Jihan!" + efek partikel | Must have |
+| FR-06 | Animasi teks "Happy Birthday, Keonho!" + efek partikel | Must have |
 | FR-07 | Tombol lanjut antar-layar di setiap fase | Must have |
 | FR-08 | Music player dengan animasi vinyl/sound wave | Must have |
 | FR-09 | Kontrol play/pause musik | Must have |
 | FR-10 | Halaman ucapan/surat personal | Must have |
 | FR-11 | Galeri foto dengan lightbox | Must have |
 | FR-12 | Responsive di semua ukuran layar (mobile-first) | Must have |
-| FR-13 | Guestbook/kolom balasan dari Jihan | Nice to have |
+| FR-13 | Guestbook/kolom balasan dari Keonho | Nice to have |
 | FR-14 | Mic-based blow-out detection (tiup asli via mic) | Nice to have |
 | FR-15 | OG image preview saat link dibagikan | Nice to have |
 
@@ -194,7 +194,7 @@ Layar ini punya **dua state**, tergantung waktu saat website diakses:
 
 ## 10. Konten yang Perlu Disiapkan User
 
-- [ ] Nama penerima: **Jihan**
+- [ ] Nama penerima: **Keonho**
 - [ ] Tanggal target ulang tahun (konfirmasi: 14 Desember)
 - [ ] Foto-foto kenangan (disarankan 6–12 foto, format & rasio lihat `design.md`)
 - [ ] File lagu favorit (mp3, pastikan untuk pemakaian pribadi/non-publik)
@@ -205,7 +205,7 @@ Layar ini punya **dua state**, tergantung waktu saat website diakses:
 
 > ⚠️ **Bagian ini perlu dikonfirmasi user sebelum development dimulai.**
 
-1. **Tanggal target countdown** — brief menyebut "14-12-2009". Karena tanggal ini sudah lampau, PRD ini mengasumsikan **2009 adalah tahun lahir Jihan**, dan countdown yang dimaksud adalah menuju **ulang tahun terdekat berikutnya (14 Desember)**, dengan tahun dihitung otomatis mengikuti tahun berjalan/berikutnya. *Mohon dikonfirmasi apakah ini benar, atau apakah maksudnya adalah tanggal spesifik lain.*
+1. **Tanggal target countdown** — brief menyebut "14-12-2009". Karena tanggal ini sudah lampau, PRD ini mengasumsikan **2009 adalah tahun lahir Keonho**, dan countdown yang dimaksud adalah menuju **ulang tahun terdekat berikutnya (14 Desember)**, dengan tahun dihitung otomatis mengikuti tahun berjalan/berikutnya. *Mohon dikonfirmasi apakah ini benar, atau apakah maksudnya adalah tanggal spesifik lain.*
 2. **Timezone** countdown diasumsikan **WIB (Asia/Jakarta)**.
 3. **Mekanisme tiup lilin**: direkomendasikan berbasis **tap/klik** (sederhana & pasti berjalan di semua device). Deteksi tiupan asli via mikrofon dimasukkan sebagai *stretch goal* opsional karena butuh izin akses mic dan kurang reliable di beberapa browser.
 4. **Hak pakai lagu**: karena bersifat hadiah personal (bukan produk publik), lagu diasumsikan untuk pemakaian pribadi/terbatas, bukan didistribusikan secara publik.
@@ -213,7 +213,7 @@ Layar ini punya **dua state**, tergantung waktu saat website diakses:
 ## 12. Metrik Keberhasilan
 
 Karena ini produk hadiah personal (bukan produk bisnis), metrik keberhasilan lebih ke kualitas pengalaman:
-- User (Jihan) berhasil menyelesaikan seluruh alur dari amplop hingga galeri foto.
+- User (Keonho) berhasil menyelesaikan seluruh alur dari amplop hingga galeri foto.
 - Tidak ada bug/crash yang menghentikan alur di tengah jalan.
 - Pengalaman terasa lancar & personal di perangkat mobile.
 
@@ -225,7 +225,7 @@ Karena ini produk hadiah personal (bukan produk bisnis), metrik keberhasilan leb
 
 ## 14. Stretch Goals (Opsional)
 
-- Guestbook — kolom balasan singkat dari Jihan yang tersimpan.
+- Guestbook — kolom balasan singkat dari Keonho yang tersimpan.
 - Deteksi tiup lilin asli via mikrofon.
 - OG image/meta preview custom saat link dibagikan ke WhatsApp/Instagram.
 - Toggle mute musik global yang persist antar-layar.
